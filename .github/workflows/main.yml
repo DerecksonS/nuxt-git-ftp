@@ -3,10 +3,10 @@ on: push
 name: 🚀 Deploy website on push
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: 🎉 Deploy to Server
     runs-on: ubuntu-latest
     steps:
-    - name: 🚚 Get latest code
+    - name: 🚚 Get latest code | Run Forest, RUN
       uses: actions/checkout@v2.3.2
 
     - name: Use Node.js 12
@@ -14,7 +14,7 @@ jobs:
       with:
         node-version: '12'
       
-    - name: 🔨 Build Project
+    - name: 🔨🔨🔨🔨 Build Project 🔨🔨🔨🔨
       run: |
         npm install
         npm run build
@@ -22,9 +22,9 @@ jobs:
     - name: 📂 Sync files
       uses: SamKirkland/FTP-Deploy-Action@4.0.0
       with:
-        server: ftp.dereckson.dev
+        server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
-        server-dir: novo/
+        server-dir: ${{ FTP_FOLDER }}
 
 
